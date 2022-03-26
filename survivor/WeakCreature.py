@@ -11,5 +11,5 @@ class WeakCreature(core.Creature):
       self.wander()
 
   def __str__(self):
-    return f'{self._name}'
+    return f'{self._name} ({self.x} {self.y})'
     
