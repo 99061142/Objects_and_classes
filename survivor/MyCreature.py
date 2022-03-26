@@ -8,7 +8,11 @@ class MyCreature(core.Creature):
       nearCreatures[0].x == self.x and nearCreatures[0].y == self.y:
       self.hit(nearCreatures[0])
     else:
-      self.wander()
+      for i in range(10):
+        self.moveLeft()
+      
+      for i in range(10):
+        self.moveRight()
 
   def __str__(self):
     return f'{self._name} ({self.x} {self.y})'
