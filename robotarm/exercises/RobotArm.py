@@ -462,6 +462,10 @@ class SmartRobotArm(RobotArm):
       else:
         super().moveRight()
 
+  def getStackSize(self, position:int=1):
+    return len(self._yard[position-1]) # Return the amount of boxes at the row the user search for
+
+
   @property
   def position(self):
     # Return the position of the arm (horizontal)
