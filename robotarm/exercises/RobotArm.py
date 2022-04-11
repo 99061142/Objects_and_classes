@@ -451,6 +451,17 @@ class SmartRobotArm(RobotArm):
     for i in range(times):
       super().moveLeft()
 
+  def moveTo(self, position:int):
+    # If the arm must move to another position
+    while self.position != position:
+      # If the arm must go to the left
+      if self.position > position:
+        super().moveLeft()
+    
+      # If the arm must go to the right
+      else:
+        super().moveRight()
+
   @property
   def position(self):
     # Return the position of the arm (horizontal)
@@ -459,4 +470,4 @@ class SmartRobotArm(RobotArm):
   @property
   def _position(self):
     # Calculate the position of the arm (horizontal)
-    return ((self._armX - 6) //34) +1
+    return ((self._armX - 6) // 34) + 1
