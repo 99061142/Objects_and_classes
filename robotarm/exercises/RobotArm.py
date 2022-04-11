@@ -440,3 +440,9 @@ class RobotArm:
 
   def operate(self):
     self.wait(self._operator)
+
+
+class SmartRobotArm(RobotArm):
+    def moveRightTimes(self, times:int):
+        for i in range(times):
+          super().moveRight()
