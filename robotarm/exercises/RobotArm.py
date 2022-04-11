@@ -443,10 +443,20 @@ class RobotArm:
 
 
 class SmartRobotArm(RobotArm):
-    def moveRightTimes(self, times:int):
-        for i in range(times):
-          super().moveRight()
+  def moveRightTimes(self, times:int):
+    for i in range(times):
+      super().moveRight()
 
-    def moveLeftTimes(self, times:int):
-      for i in range(times):
-        super().moveLeft()
+  def moveLeftTimes(self, times:int):
+    for i in range(times):
+      super().moveLeft()
+
+  @property
+  def position(self):
+    # Return the position of the arm (horizontal)
+    return self._position
+
+  @property
+  def _position(self):
+    # Calculate the position of the arm (horizontal)
+    return ((self._armX - 6) //34) +1
