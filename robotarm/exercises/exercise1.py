@@ -1,7 +1,7 @@
 from RobotArm import SmartRobotArm
 
 robotArm = SmartRobotArm()
-robotArm.loadMyLevel([['yellow, yellow, blue', 'blue'], [], []])
+robotArm.loadMyLevel([['yellow, yellow, blue', 'blue'], [], [], [], [], [], [], [], [], ["white"]])
 
 # Jouw python instructies zet je vanaf hier:
 
