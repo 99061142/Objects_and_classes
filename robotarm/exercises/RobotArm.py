@@ -465,6 +465,28 @@ class SmartRobotArm(RobotArm):
   def getStackSize(self, position:int=1):
     return len(self._yard[position-1]) # Return the amount of boxes at the row the user search for
 
+  def moveStackTo(self, position:int):
+    # Total boxes of the current stack, and the stack the user wants to move to
+    start_stack_amount = self.getStackSize(self.position) # Start stack amount of boxes
+    next_stack_amount = self.getStackSize(position) # Stack amount of boxes the user wants to move to
+    total_boxes = start_stack_amount + next_stack_amount # Total amount of boxes
+
+    # If the boxes are too many to stack
+    if total_boxes > self._maxLayers:
+      return False
+    
+    # If the start stack can be moved to the stack the user wants to get the boxes to
+    else:
+      start_position = self.position
+
+      for i in range(start_stack_amount):
+        self.grab()
+        self.moveTo(position) # Move to the stack the user wants to get the boxes
+        self.drop()
+        self.moveTo(start_position) # Go back to the start stack
+      
+      return True
+
 
   @property
   def position(self):
