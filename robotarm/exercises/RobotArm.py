@@ -446,3 +446,7 @@ class SmartRobotArm(RobotArm):
     def moveRightTimes(self, times:int):
         for i in range(times):
           super().moveRight()
+
+    def moveLeftTimes(self, times:int):
+      for i in range(times):
+        super().moveLeft()
