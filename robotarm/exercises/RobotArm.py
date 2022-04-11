@@ -487,6 +487,23 @@ class SmartRobotArm(RobotArm):
       
       return True
 
+  def getNextColorRight(self, color:str):
+    start_position = self.position # Start position to search the box
+    check_amount =  self._maxStacks - self.position + 1 # Amount of stacks the arm checks
+
+    # For every stack the arm must check
+    for i in range(check_amount): 
+      # If the color is at the top of the stack
+      if self._yard[self._position-1] and self._yard[self._position-1][-1] == color:
+        super().grab()
+        return True
+      
+      # If the color is not at the top of the stack
+      else:
+        super().moveRight()
+
+    self.moveTo(start_position) # Go back to the start stack
+    return False
 
   @property
   def position(self):
